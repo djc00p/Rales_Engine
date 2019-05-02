@@ -5,7 +5,7 @@ class Merchant < ApplicationRecord
   validates_presence_of :name
 
   def self.most_revenue(count)
-    select('merchant.*, SUM(invoice_items.quantity * invoice_items.unit_price)')
+    select('merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) as revenue')
     .joins(items: :invoice_items)
     .group(:id)
     .order('revenue DESC')

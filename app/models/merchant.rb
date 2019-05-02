@@ -19,4 +19,12 @@ class Merchant < ApplicationRecord
     .order('items_sold DESC')
     .limit(count)
   end
+
+  def self.revenue(date)
+    select('merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) as revenue')
+    .joins(items: :invoice_items)
+    .group(:id)
+    .where(updated_at: date)
+    .order('revenue DESC')
+  end
 end

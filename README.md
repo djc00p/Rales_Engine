@@ -1,5 +1,7 @@
 # README
-<!-- rake import:{customer,invoice_item,invoice,item,merchant,transaction} -->
+run `bundle install`
+run `rake db:{drop,create,migrate}`
+run `rake import:all`
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

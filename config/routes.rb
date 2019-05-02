@@ -10,8 +10,17 @@ Rails.application.routes.draw do
         get '/random', to: 'random#show', as: :random_merchant
         get '/most_revenue', to: 'most_revenue#show', as: :most_revenue
         get '/most_items', to: 'most_items#show', as: :most_items
+        get '/revenue', to: 'revenue#show', as: :revenue
       end
-      resources :merchants, only: [:index, :show, :create, :update, :destroy]
+      namespace :invoices do
+        get '/:id/transactions', to: 'transactions#index', as: :transactions
+        get '/:id/invoice_items', to: 'invoice_items#index', as: :invoice_items
+        get '/:id/items', to: 'items#index', as: :items
+        get '/:id/customers', to: 'customers#index', as: :customers
+        get '/:id/merchants', to: 'merchants#index', as: :merchants
+      end
+      resources :merchants, only: [:index, :show]
+      resources :invoices, only: [:index, :show]
     end
   end
 end

@@ -5,7 +5,6 @@ class Api::V1::Invoices::SearchController < ApplicationController
   end
 
   def show
-
     render json: InvoiceSerializer.new(Invoice.where(invoice_params).first)
   end
 

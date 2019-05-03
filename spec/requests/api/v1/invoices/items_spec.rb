@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Invoice API" do
-  it "sends a list of invoice items" do
+  it "sends a list of items" do
     merch = create(:merchant)
     item1, item2, item3, item4, item5 = create_list(:item, 5, merchant_id: merch.id)
     customer3 = create(:customer)
@@ -12,7 +12,7 @@ describe "Invoice API" do
     invoice4 = create(:invoice_item, invoice_id: id, item_id: item5.id)
     invoice5 = create(:invoice_item, invoice_id: id, item_id: item2.id)
 
-    get "/api/v1/invoices/#{id}/invoice_items"
+    get "/api/v1/invoices/#{id}/items"
 
     expect(response).to be_successful
 

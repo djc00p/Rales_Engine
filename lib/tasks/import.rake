@@ -65,7 +65,7 @@ namespace :import do
     require 'csv'
     count = 0
     CSV.foreach('./db/data/transactions.csv', headers: true) do |row|
-      Transaction.create(row.to_h)
+      Transaction.create!(row.to_h)
       count += 1
     end
     puts "Imported #{count} Transactions"

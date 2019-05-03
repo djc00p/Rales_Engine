@@ -12,18 +12,28 @@ Rails.application.routes.draw do
         get '/most_items', to: 'most_items#show', as: :most_items
         get '/revenue', to: 'revenue#show', as: :revenue
       end
+      resources :merchants, only: [:index, :show]
+
       namespace :invoices do
         get '/find', to: 'search#show', as: :find_invoice
         get '/find_all', to: 'search#index', as: :find_all_invoices
-        get '/random', to: 'random#show', as: :random_merchant
+        get '/random', to: 'random#show', as: :random_invoice
         get '/:id/transactions', to: 'transactions#index', as: :transactions
         get '/:id/invoice_items', to: 'invoice_items#index', as: :invoice_items
         get '/:id/items', to: 'items#index', as: :items
         get '/:id/customer', to: 'customer#show', as: :customer
         get '/:id/merchant', to: 'merchant#show', as: :merchant
       end
-      resources :merchants, only: [:index, :show]
       resources :invoices, only: [:index, :show]
+
+      namespace :invoice_items do
+        get '/find', to: 'search#show', as: :find_invoice_item
+        get '/find_all', to: 'search#index', as: :find_all_invoice_items
+        get '/random', to: 'random#show', as: :random_invoice_item
+        get '/:id/invoice', to: 'invoice#show', as: :invoice
+        get '/:id/item', to: 'item#show', as: :item
+      end
+      resources :invoice_items, only: [:index, :show]
     end
   end
 end

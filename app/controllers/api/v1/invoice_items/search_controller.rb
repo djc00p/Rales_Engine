@@ -1,11 +1,19 @@
 class Api::V1::InvoiceItems::SearchController < ApplicationController
 
   def index
-    render json: InvoiceItemSerializer.new(InvoiceItem.where(invoice_item_params))
+    if invoice_item_params[:unit_price]
+      render json: InvoiceItemSerializer.new(InvoiceItem.unit_price_find(invoice_item_params[:unit_price]))
+    else
+      render json: InvoiceItemSerializer.new(InvoiceItem.where(invoice_item_params))
+    end
   end
 
   def show
-    render json: InvoiceItemSerializer.new(InvoiceItem.where(invoice_item_params).first)
+    if invoice_item_params[:unit_price]
+      render json: InvoiceItemSerializer.new(InvoiceItem.unit_price_find(invoice_item_params[:unit_price]).first)
+    else
+      render json: InvoiceItemSerializer.new(InvoiceItem.where(invoice_item_params).first)
+    end
   end
 
   private

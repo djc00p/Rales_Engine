@@ -1,26 +1,24 @@
-# README
-run `bundle install`
-run `rake db:{drop,create,migrate}`
-run `rake import:all`
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Rails Engine
 
-Things you may want to cover:
+By Deonte Cooper
 
-* Ruby version
+This project is the first individual project in Mod 3 at Turing School of Software & Design.
 
-* System dependencies
+## Objective
 
-* Configuration
+I used Rails and ActiveRecord to build a JSON API, which exposes the SalesEngine data schema. I also
+learned how to to build Single-Responsibility controllers to provide a well-designed and versioned
+API, how to use controller tests to drive my design, and used Ruby and ActiveRecord to perform more
+complicated business intelligence.
 
-* Database creation
+## Getting Started
 
-* Database initialization
+### Requirements
 
-* How to run the test suite
+Requires Ruby 2.4.1 and Rails 5.1.7
 
-* Services (job queues, cache servers, search engines, etc.)
+### Installing Application
 
-* Deployment instructions
-
-* ...
+run `bundle install` or `bundle exec insatll`
+Next run `rake db:{drop,create,migrate}`
+Last youl'll run `rake import:all`
